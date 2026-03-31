@@ -1,4 +1,4 @@
-package damain;
+package domain;
 
 import util.NumberGenerator;
 
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService {
+    public static final int TICKET_PRICE = 1000;
+    public static final int LOTTO_SIZE = 6;
     NumberGenerator numberGenerator;
 
     public LottoService(NumberGenerator numberGenerator) {
@@ -14,7 +16,7 @@ public class LottoService {
 
     public List<LottoTicket> buyTickets(int money) {
         validateMoney(money);
-        int ticketCount = money/1000;
+        int ticketCount = money/ TICKET_PRICE;
 
         List<LottoTicket> tickets = new ArrayList<>();
 
@@ -29,15 +31,18 @@ public class LottoService {
 
         List<Integer> ticketNumbers = new ArrayList<>();
 
-        for(int i=0;i<6;i++){
-            ticketNumbers.add(numberGenerator.generate());
+        while (ticketNumbers.size() < LOTTO_SIZE) {
+            int randomNumber = numberGenerator.generate();
+            if(!ticketNumbers.contains(randomNumber)) {
+                ticketNumbers.add(randomNumber);
+            }
         }
 
         return new LottoTicket(ticketNumbers);
     }
 
     private void validateMoney(int money) {
-        if(money < 1000) {
+        if(money < TICKET_PRICE) {
             throw new IllegalArgumentException("1000원 이상의 금액을 입력해주세요.");
         }
     }
