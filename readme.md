@@ -12,3 +12,11 @@
 - [x] 로또 당첨 번호를 받아 일치한 번호 수에 따라 당첨 결과를 보여준다.
 - [x] 모든 원시 값과 문자열을 포장한다.
 - [x] 일급 컬렉션을 쓴다.
+
+### 리뷰 반영
+- [ ] 로또 shuffle 사용해보기
+- [ ] MATCHED_TRHEE_COUNT, MATHCED_FOUR_COUNT 오타 수정
+- [ ] SequenceGenerator 테스트 폴더로 이동
+- [ ] winningResult 구조 개선 생각해보기(가독성)
+- [ ] LottoTickets 일급 컬렉션으로 감싸서 가독성 높이기
+- [ ] 로또 티켓 생성 및 테스트 테스트 전용 빌더/팩토리 적용해보기
