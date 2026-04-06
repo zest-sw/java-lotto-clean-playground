@@ -1,11 +1,10 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Statistic {
 
-    public static final int WINNING_COUNT = 1;
+
     public static final int MATCHED_THREE_PRIZE = 5000;
     public static final int MATCHED_FOUR_PRIZE = 50000;
     public static final int MATCHED_FIVE_PRIZE = 1500000;
@@ -15,20 +14,22 @@ public class Statistic {
     public static final int MATCHED_FIVE_COUNT = 5;
     public static final int MATCHED_SIX_COUNT = 6;
 
-    public List<Integer> getWinningResult(List<LottoTicket> lottoTickets, List<Integer> winningNumbers) {
-        List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0));
+    public WinningResult getWinningResult(List<LottoTicket> lottoTickets, List<Integer> winningNumbers) {
+        WinningResult winningResult = new WinningResult();
+
         for(LottoTicket lottoTicket: lottoTickets) {
-            int index = lottoTicket.getMatchedNumbers(winningNumbers);
-            winningResult.set(index, winningResult.get(index) + WINNING_COUNT);
+            int matchedCount = lottoTicket.getMatchedNumbers(winningNumbers);
+
+            winningResult.add(matchedCount);
         }
         return winningResult;
     }
 
-    public double getRevenue(int money, List<Integer> winningResult){
-        double prize = MATCHED_THREE_PRIZE * winningResult.get(MATCHED_THREE_COUNT)
-                     + MATCHED_FOUR_PRIZE  * winningResult.get(MATCHED_FOUR_COUNT)
-                     + MATCHED_FIVE_PRIZE  * winningResult.get(MATCHED_FIVE_COUNT)
-                     + MATCHED_SIX_PRIZE   * winningResult.get(MATCHED_SIX_COUNT);
+    public double getRevenue(int money, WinningResult winningResult){
+        double prize = MATCHED_THREE_PRIZE * winningResult.getCountOf(MATCHED_THREE_COUNT)
+                     + MATCHED_FOUR_PRIZE  * winningResult.getCountOf(MATCHED_FOUR_COUNT)
+                     + MATCHED_FIVE_PRIZE  * winningResult.getCountOf(MATCHED_FIVE_COUNT)
+                     + MATCHED_SIX_PRIZE   * winningResult.getCountOf(MATCHED_SIX_COUNT);
         return prize/money;
     }
 }
