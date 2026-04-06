@@ -17,8 +17,7 @@
 - [x] 로또 shuffle 사용해보기
 - [x] MATCHED_TRHEE_COUNT, MATHCED_FOUR_COUNT 오타 수정
 - [ ] ~~SequenceGenerator 테스트 폴더로 이동~~
-- [ ] winningResult 구조 개선 생각해보기(가독성)
-- [ ] LottoTickets 일급 컬렉션으로 감싸서 가독성 높이기
+- [x] winningResult 구조 개선 생각해보기(가독성)
 - [ ] ~~로또 티켓 생성 및 테스트 테스트 전용 빌더/팩토리 적용해보기~~
 
 ### 느낀점
