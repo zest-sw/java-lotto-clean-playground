@@ -3,7 +3,10 @@ package domain;
 import util.NumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoService {
     public static final int TICKET_PRICE = 1000;
@@ -28,15 +31,14 @@ public class LottoService {
     }
 
     private LottoTicket generateTicket() {
-
+        List<Integer> ticketBasket = new ArrayList<>();
         List<Integer> ticketNumbers = new ArrayList<>();
 
-        while (ticketNumbers.size() < LOTTO_SIZE) {
-            int randomNumber = numberGenerator.generate();
-            if(!ticketNumbers.contains(randomNumber)) {
-                ticketNumbers.add(randomNumber);
-            }
-        }
+        ticketBasket = IntStream.rangeClosed(1,45)
+                                .boxed()
+                                .collect(Collectors.toList());
+        Collections.shuffle(ticketBasket);
+        ticketNumbers = ticketBasket.subList(0, 6);
 
         return new LottoTicket(ticketNumbers);
     }
