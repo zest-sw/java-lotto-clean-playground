@@ -10,8 +10,8 @@ public class Statistic {
     public static final int MATCHED_FOUR_PRIZE = 50000;
     public static final int MATCHED_FIVE_PRIZE = 1500000;
     public static final int MATCHED_SIX_PRIZE = 2000000000;
-    public static final int MATCHED_TRHEE_COUNT = 3;
-    public static final int MATHCED_FOUR_COUNT = 4;
+    public static final int MATCHED_THREE_COUNT = 3;
+    public static final int MATCHED_FOUR_COUNT = 4;
     public static final int MATCHED_FIVE_COUNT = 5;
     public static final int MATCHED_SIX_COUNT = 6;
 
@@ -25,8 +25,8 @@ public class Statistic {
     }
 
     public double getRevenue(int money, List<Integer> winningResult){
-        double prize = MATCHED_THREE_PRIZE * winningResult.get(MATCHED_TRHEE_COUNT)
-                     + MATCHED_FOUR_PRIZE  * winningResult.get(MATHCED_FOUR_COUNT)
+        double prize = MATCHED_THREE_PRIZE * winningResult.get(MATCHED_THREE_COUNT)
+                     + MATCHED_FOUR_PRIZE  * winningResult.get(MATCHED_FOUR_COUNT)
                      + MATCHED_FIVE_PRIZE  * winningResult.get(MATCHED_FIVE_COUNT)
                      + MATCHED_SIX_PRIZE   * winningResult.get(MATCHED_SIX_COUNT);
         return prize/money;
