@@ -1,6 +1,5 @@
 package domain;
 
-import util.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,10 +10,8 @@ import java.util.stream.IntStream;
 public class LottoService {
     public static final int TICKET_PRICE = 1000;
     public static final int LOTTO_SIZE = 6;
-    NumberGenerator numberGenerator;
 
-    public LottoService(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public LottoService() {
     }
 
     public List<LottoTicket> buyTickets(int money) {
