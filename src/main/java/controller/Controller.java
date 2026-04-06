@@ -3,7 +3,6 @@ package controller;
 import domain.LottoService;
 import domain.LottoTicket;
 import domain.Statistic;
-import util.RandomNumberGenerator;
 import view.InputView;
 import view.OutputView;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class Controller {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
-    LottoService lottoService = new LottoService(new RandomNumberGenerator());
+    LottoService lottoService = new LottoService();
     Statistic statistic = new Statistic();
 
 
