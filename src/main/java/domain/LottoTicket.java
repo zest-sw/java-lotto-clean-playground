@@ -32,7 +32,7 @@ public class LottoTicket {
         if(matchedCount == 3) return 5;
         else if (matchedCount == 4) return 4;
         else if (matchedCount == 5 && !hasBonusNumber) return 3;
-        else if (matchedCount == 5 && hasBonusNumber) return 2;
+        else if (matchedCount == 5) return 2;
         else if (matchedCount == 6) return 1;
         else return 6;
     }

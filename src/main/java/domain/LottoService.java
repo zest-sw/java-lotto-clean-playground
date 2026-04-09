@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 
 public class LottoService {
     public static final int TICKET_PRICE = 1000;
-    public static final int LOTTO_SIZE = 6;
 
     public LottoService() {
     }
@@ -36,8 +35,8 @@ public class LottoService {
     }
 
     private LottoTicket generateTicket() {
-        List<Integer> ticketBasket = new ArrayList<>();
-        List<Integer> ticketNumbers = new ArrayList<>();
+        List<Integer> ticketBasket;
+        List<Integer> ticketNumbers;
 
         ticketBasket = IntStream.rangeClosed(1,45)
                                 .boxed()
