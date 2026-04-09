@@ -14,11 +14,19 @@ public class LottoService {
     public LottoService() {
     }
 
-    public TicketBundle buyTickets(int money) {
+    public TicketBundle buyTickets(int money, List<List<Integer>> manualBuyTickets) {
+        int manalTicketNumber = manualBuyTickets.size();
+        money = money - manalTicketNumber *TICKET_PRICE;
+
         validateMoney(money);
         int ticketCount = money/ TICKET_PRICE;
 
         TicketBundle tickets = new TicketBundle();
+
+        for(List<Integer> ticketNumbers:manualBuyTickets){
+            LottoTicket ticket = new LottoTicket(ticketNumbers);
+            tickets.add(ticket);
+        }
 
         for(int i=0;i<ticketCount;i++){
             tickets.add(generateTicket());

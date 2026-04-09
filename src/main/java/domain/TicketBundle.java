@@ -21,7 +21,7 @@ public class TicketBundle implements Iterable<LottoTicket> {
 
         for(LottoTicket ticket : ticketBundle){
             int ticketGrade = ticket.getTicketGrade(winningNumbers, bonusNumber);
-            ticket.getTicketPrice(ticketGrade);
+            price += ticket.getTicketPrice(ticketGrade);
         }
 
         return price;
