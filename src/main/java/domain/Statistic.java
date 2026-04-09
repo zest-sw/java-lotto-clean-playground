@@ -14,7 +14,7 @@ public class Statistic {
     public static final int MATCHED_FIVE_COUNT = 5;
     public static final int MATCHED_SIX_COUNT = 6;
 
-    public WinningResult getWinningResult(List<LottoTicket> lottoTickets, List<Integer> winningNumbers) {
+    public WinningResult getWinningResult(List<LottoTicket> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
         WinningResult winningResult = new WinningResult();
 
         for(LottoTicket lottoTicket: lottoTickets) {

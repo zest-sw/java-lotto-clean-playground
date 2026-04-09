@@ -24,8 +24,9 @@ public class Controller {
         outputView.printLottoList(lottoTickets.size(), lottoTickets);
 
         List<Integer> winningNumbers = inputView.getWinningNumbers();
+        int bonusNumber = inputView.getBonusNumber();
 
-        WinningResult winningResult = statistic.getWinningResult(lottoTickets, winningNumbers);
+        WinningResult winningResult = statistic.getWinningResult(lottoTickets, winningNumbers, bonusNumber);
         double revenue = statistic.getRevenue(money, winningResult);
 
         outputView.printResult(winningResult, revenue);
