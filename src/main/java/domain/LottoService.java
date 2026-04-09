@@ -14,11 +14,11 @@ public class LottoService {
     public LottoService() {
     }
 
-    public List<LottoTicket> buyTickets(int money) {
+    public TicketBundle buyTickets(int money) {
         validateMoney(money);
         int ticketCount = money/ TICKET_PRICE;
 
-        List<LottoTicket> tickets = new ArrayList<>();
+        TicketBundle tickets = new TicketBundle();
 
         for(int i=0;i<ticketCount;i++){
             tickets.add(generateTicket());

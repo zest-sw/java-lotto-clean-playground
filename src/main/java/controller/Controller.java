@@ -1,9 +1,6 @@
 package controller;
 
-import domain.LottoService;
-import domain.LottoTicket;
-import domain.Statistic;
-import domain.WinningResult;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -19,16 +16,21 @@ public class Controller {
     public void run(){
         int money = inputView.getMoney();
 
-        List<LottoTicket> lottoTickets = lottoService.buyTickets(money);
+        TicketBundle ticketBundle = lottoService.buyTickets(money);
 
-        outputView.printLottoList(lottoTickets.size(), lottoTickets);
+        outputView.printLottoList(ticketBundle);
 
         List<Integer> winningNumbers = inputView.getWinningNumbers();
         int bonusNumber = inputView.getBonusNumber();
 
-        WinningResult winningResult = statistic.getWinningResult(lottoTickets, winningNumbers, bonusNumber);
-        double revenue = statistic.getRevenue(money, winningResult);
+        int first = ticketBundle.getCountOfTicketGrade(6, winningNumbers, bonusNumber);
+        int second = ticketBundle.getCountOfTicketGrade(2, winningNumbers, bonusNumber);
+        int third = ticketBundle.getCountOfTicketGrade(3, winningNumbers, bonusNumber);
+        int fourth = ticketBundle.getCountOfTicketGrade(4, winningNumbers, bonusNumber);
 
-        outputView.printResult(winningResult, revenue);
+        int totalReward = ticketBundle.getTotalPrice(winningNumbers, bonusNumber);
+        double revenue = statistic.getRevenue(money,totalReward);
+
+        outputView.printResult(first, second, third, fourth, revenue);
     }
 }
